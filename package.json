@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "pptxgenjs": "^2.3.0"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
   }
 }

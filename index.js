@@ -1,131 +1,107 @@
-const PptxGenJS = require('pptxgenjs')
+const profile = require('./dan.siwiec.json')
+const Presentation = require('./presentation')
+const Section = require('./section')
+const { slalomBlue, slalomGray, white } = require('./consts')
 
-const pptx = new PptxGenJS()
-const slide = pptx.addNewSlide()
-
-// SLIDE 10 x 5.625 inches
-
-const addAvatar = () => {
-  slide.addImage({
-    path:'/Users/daniel.siwiec/Downloads/Profile.jpg', 
-    x:6,
-    y:0.2, 
-    rounding: true,
-    sizing: { type:'contain', w:1.3, h:1.3 }
-  })
-
-  const addAvatarFrame = () => {
-    slide.addShape(pptx.shapes.OVAL, {
-      x:6,
-      y:0.2, 
-      w:1.3,
-      h:1.3,
-      line: '818283',
+const avatar = () => {
+  return new Section({ x: 0.6, y: 0.03 })
+    .withImage({
+      path: profile.avatar,
+      rounding: true,
+      sizing: { type: 'contain', w: 1.3, h: 1.3 }
+    })
+    .withShape({
+      type: 'OVAL',
+      w: 1.3,
+      h: 1.3,
+      line: slalomGray,
       lienSize: 8
     })
-  }
-
-  addAvatarFrame()
 }
 
-const addName = () => {
-  slide.addText('Dan Siwiec', {
-    x: 0.2,
-    y:0.2,
-    bold: true,
-    color: '0072C8',
-    fontFace: 'Arial',
-    fontSize: 24
-  })
+const name = () => {
+  return new Section({ x: 0.01, y: 0.03 })
+    .withText({
+      text: profile.name,
+      color: slalomBlue,
+      bold: true,
+      fontSize: 24
+    })
+    .withText({
+      text: `${profile.title}, ${profile.practice}`,
+      y: 0.05,
+      color: slalomGray,
+      bold: true,
+      fontSize: 14
+    })
 }
 
-const addTitle = () => {
-  slide.addText('Solutions Principal, Technology Enablement', {
-    x: 0.2,
-    y:0.5,
-    bold: true,
-    color: '818283',
-    fontFace: 'Arial',
-    fontSize: 14
-  })
+const experience = () => {
+  return new Section({ x: 0.75, y: 0 })
+    .withShape({
+      type: 'RECTANGLE',
+      w: '25%',
+      h: '100%',
+      fill: slalomBlue
+    })
+    .withText({
+      text: `${profile.years}+`,
+      x: 0.02,
+      y: 0.05,
+      bold: true,
+      color: white,
+      fontSize: 21
+    })
+    .withText({
+      text: 'years\nexperience',
+      x: 0.02,
+      y: 0.13,
+      color: white,
+      fontSize: 9
+    })
+    .withText({
+      text: profile.architectedNumber,
+      x: 0.1,
+      y: 0.05,
+      bold: true,
+      color: white,
+      fontSize: 21
+    })
+    .withText({
+      text: 'custom\napplications\narchitected',
+      x: 0.1,
+      y: 0.13,
+      color: white,
+      fontSize: 9
+    })
+    .withShape({
+      type: 'LINE',
+      y: 0.25,
+      w: '25%',
+      h: 0,
+      line: white,
+      lineSize: 0.5
+    })
+    .withText({
+      text: 'TOP SKILLS / EXPERTISE',
+      y: 0.28,
+      bold: true,
+      color: white,
+      fontSize: 10.5
+    })
+    .withText({
+      text: profile.skills.map(skill => `\u25A0   ${skill}`).join('\n'),
+      y: 0.35,
+      w: '25%',
+      lineSpacing: 15,
+      valign: 'top',
+      color: white,
+      fontSize: 9
+    })
 }
 
-const addExperience = () => {
-  slide.addShape(pptx.shapes.RECTANGLE, {
-    x:'75%',
-    y:0,
-    w:'25%',
-    h:'100%',
-    fill:'0072C8' })
-
-    const addYearsOfExperience = () => {
-      slide.addText('14+', {
-        x: '77%',
-        y:'5%',
-        bold: true,
-        color: 'FFFFFF',
-        fontFace: 'Arial',
-        fontSize: 21
-      })
-
-      slide.addText('years\nexperience', {
-        x: '77%',
-        y:'13%',
-        color: 'FFFFFF',
-        fontFace: 'Arial',
-        fontSize: 9
-      })
-    }
-
-    const addApplicationsArchitected = () => {
-      slide.addText('9', {
-        x: '85%',
-        y:'5%',
-        bold: true,
-        color: 'FFFFFF',
-        fontFace: 'Arial',
-        fontSize: 21
-      })
-
-      slide.addText('custom\napplications\narchitected', {
-        x: '85%',
-        y:'14%',
-        color: 'FFFFFF',
-        fontFace: 'Arial',
-        fontSize: 9
-      })
-    }
-
-    const addLine = () => {
-      slide.addShape(pptx.shapes.LINE, {
-        x:'77%',
-        y:'25%',
-        w:'22%',
-        h: 0,
-        line:'FFFFFF',
-        lineSize: 0.5 });
-    }
-
-    const addSkills = () => {
-      slide.addText('TOP SKILLS / EXPERTISE', {
-        x: '77%',
-        y:'28%',
-        color: 'FFFFFF',
-        bold: true,
-        fontFace: 'Arial',
-        fontSize: 10.5
-      })
-    }
-
-    addApplicationsArchitected()
-    addYearsOfExperience()
-    addLine()
-    addSkills()
-}
-
-addName()
-addTitle()
-addAvatar()
-addExperience()
-pptx.save('Sample Presentation')
-
+new Presentation(profile.name)
+  .withSection(avatar())
+  .withSection(name())
+  .withSection(experience())
+  .build()

@@ -1,0 +1,26 @@
+const PptxGenJS = require('pptxgenjs')
+
+class Presentation {
+  constructor (name) {
+    this.name = name
+    this.sections = []
+    this.pptx = new PptxGenJS()
+    this.slide = this.pptx.addNewSlide()
+  }
+
+  _addSection (section) {
+    section.elementMakers.forEach(elementMaker => elementMaker(this.slide))
+  }
+
+  build () {
+    this.sections.forEach(section => this._addSection(section))
+    this.pptx.save(this.name)
+  }
+
+  withSection (section) {
+    this.sections.push(section)
+    return this
+  }
+}
+
+module.exports = Presentation

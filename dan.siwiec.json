@@ -1,0 +1,16 @@
+{
+  "name": "Dan Siwiec",
+  "title": "Solution Principal",
+  "practice": "Technology Enablement",
+  "avatar": "/Users/daniel.siwiec/Downloads/Profile.jpg",
+  "years": 14,
+  "architectedNumber": 9,
+  "skills": [
+    "API Design / Micro-services",
+    "CI / CD best practices",
+    "JavaScript / Node.js / React / Angular",
+    "Java / Spring",
+    "MongoDB / Oracle SQL",
+    "AWS / Kubernetes / Heroku"
+  ]
+}
