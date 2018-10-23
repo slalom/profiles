@@ -19,6 +19,7 @@ class Section {
   withText (opts) {
     this.elementMakers.push(slide => {
       this._applyOffset(opts)
+      opts.valign = 'top'
       slide.addText(opts.text, opts)
     })
     return this

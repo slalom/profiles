@@ -1,5 +1,6 @@
 module.exports = {
-  slalomBlue: '0072C8',
-  slalomGray: '818283',
-  white: 'FFFFFF'
+  blue: '0072C8',
+  gray: '818283',
+  white: 'FFFFFF',
+  lightGray: 'DFE2E1'
 }
