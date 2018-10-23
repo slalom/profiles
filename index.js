@@ -116,6 +116,22 @@ const inMyWords = new Section({ x: 0.01, y: 0.17 })
     text: `"${profile.inMyWords}"`,
     w: '50%',
     y: 0.04,
+    align: 'justify',
+    fontSize: 10
+  })
+
+const summary = new Section({ x: 0.01, y: 0.37 })
+  .withText({
+    text: 'SUMMARY',
+    bold: true,
+    color: blue,
+    fontSize: 12
+  })
+  .withText({
+    text: profile.summary,
+    w: '70%',
+    y: 0.04,
+    align: 'justify',
     fontSize: 10
   })
 
@@ -124,4 +140,5 @@ new Presentation(profile.name)
   .withSection(name)
   .withSection(experience)
   .withSection(inMyWords)
+  .withSection(summary)
   .build()
