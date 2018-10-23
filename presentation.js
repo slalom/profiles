@@ -1,4 +1,5 @@
 const PptxGenJS = require('pptxgenjs')
+const waitOn = require('wait-on')
 
 class Presentation {
   constructor (name) {
@@ -12,9 +13,12 @@ class Presentation {
     section.elementMakers.forEach(elementMaker => elementMaker(this.slide))
   }
 
-  build () {
+  async build () {
     this.sections.forEach(section => this._addSection(section))
     this.pptx.save(this.name)
+    const filename = this.name + '.pptx'
+    await waitOn({ resources: [filename] })
+    return filename
   }
 
   withSection (section) {
