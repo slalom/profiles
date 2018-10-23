@@ -15,8 +15,8 @@ class Presentation {
 
   async build () {
     this.sections.forEach(section => this._addSection(section))
-    this.pptx.save(this.name)
-    const filename = this.name + '.pptx'
+    const filename = '/tmp/' + this.name + '.pptx'
+    this.pptx.save(filename)
     await waitOn({ resources: [filename] })
     return filename
   }

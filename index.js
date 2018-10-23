@@ -1,14 +1,10 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const path = require('path')
 const Profile = require('./profile')
-const port = 3000
+const fs = require('fs')
 
-app.use(bodyParser.json())
-app.post('/', async (req, res) => {
+exports.profile = async (req, res) => {
   const fileName = await new Profile(req.body).build()
-  res.sendFile(path.join(__dirname, fileName))
-})
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+  const stream = fs.createReadStream(fileName)
+  res.setHeader('content-type', 'application/vnd.openxmlformats-officedocument.presentationml.presentation')
+  stream.pipe(res)
+}
