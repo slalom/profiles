@@ -88,7 +88,7 @@ const experience = new Section({ x: 0.75, y: 0 })
     text: profile.skills.map(skill => `\u25A0   ${skill}`).join('\n'),
     y: 0.35,
     w: '25%',
-    lineSpacing: 15,
+    lineSpacing: 18,
     color: white,
     fontSize: 9
   })
