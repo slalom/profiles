@@ -96,13 +96,13 @@ const experience = new Section({ x: 0.75, y: 0 })
 const inMyWords = new Section({ x: 0.01, y: 0.17 })
   .withShape({
     type: 'RECTANGLE',
-    w: '50%',
+    w: '57%',
     h: '20%',
     fill: lightGray
   })
   .withShape({
     type: 'RECTANGLE',
-    w: '50%',
+    w: '57%',
     h: '20%',
     line: blue
   })
@@ -114,7 +114,7 @@ const inMyWords = new Section({ x: 0.01, y: 0.17 })
   })
   .withText({
     text: `"${profile.inMyWords}"`,
-    w: '50%',
+    w: '57%',
     y: 0.04,
     align: 'justify',
     fontSize: 10
@@ -135,10 +135,26 @@ const summary = new Section({ x: 0.01, y: 0.37 })
     fontSize: 10
   })
 
+const projects = new Section({ x: 0.01, y: 0.58 })
+  .withText({
+    text: 'PROJECTS HIGHLIGHTS',
+    bold: true,
+    color: blue,
+    fontSize: 12
+  })
+  .withText({
+    text: profile.projects.map(project => `\u25A0 ${project.role} - ${project.field}\n${project.description}`).join('\n'),
+    w: '70%',
+    y: 0.04,
+    align: 'justify',
+    fontSize: 9
+  })
+
 new Presentation(profile.name)
   .withSection(avatar)
   .withSection(name)
   .withSection(experience)
   .withSection(inMyWords)
   .withSection(summary)
+  .withSection(projects)
   .build()
