@@ -1,5 +1,6 @@
 const PptxGenJS = require('pptxgenjs')
 const waitOn = require('wait-on')
+const path = require('path')
 
 class Presentation {
   constructor (name) {
@@ -13,9 +14,11 @@ class Presentation {
     section.elementMakers.forEach(elementMaker => elementMaker(this.slide))
   }
 
-  async build () {
+  async build (location) {
     this.sections.forEach(section => this._addSection(section))
-    const filename = '/tmp/' + this.name + '.pptx'
+
+    const workdir = location || '/tmp'
+    const filename = path.join(workdir, this.name + '.pptx')
     this.pptx.save(filename)
     await waitOn({ resources: [filename] })
     return filename
