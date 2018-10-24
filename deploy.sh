@@ -1,0 +1,1 @@
+gcloud functions deploy profile --runtime nodejs8 --trigger-http --entry-point profile --verbosity debug
