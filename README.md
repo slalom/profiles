@@ -13,3 +13,6 @@ This tool is deployed on GCP as a function.
 
 # Configuration
 The only thing this tool needs is the `SENDGRID_API_KEY` environment variable
+
+# Local testing
+For local testing, run `node local.js profile.json`, where `profile.json` is the *profile* part of the payload. This will create the PPTX file in the current folder.

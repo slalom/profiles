@@ -1,6 +1,6 @@
 const Presentation = require('./presentation')
 const Section = require('./section')
-const { blue, gray, white, lightGray } = require('./consts')
+const { blue, gray, white, lightGray, logo } = require('./consts')
 
 class Profile {
   constructor (profile) {
@@ -151,9 +151,16 @@ class Profile {
         align: 'justify',
         fontSize: 9
       })
+
+    this._logo = new Section({ x: 0.92, y: 0.95 })
+      .withImage({
+        path: logo.url,
+        w: 0.2 * logo.ratio,
+        h: 0.2
+      })
   }
 
-  async build () {
+  async build (location) {
     return new Presentation(this.profile.name)
       .withSection(this._avatar)
       .withSection(this._name)
@@ -161,7 +168,8 @@ class Profile {
       .withSection(this._inMyWords)
       .withSection(this._summary)
       .withSection(this._projects)
-      .build()
+      .withSection(this._logo)
+      .build(location)
   }
 }
 
