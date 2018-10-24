@@ -20,7 +20,7 @@ module.exports.send = async ({ to, filename, profileName }) => {
     attachments: [
       {
         content: await fileContents(filename),
-        filename: 'profile.pptx',
+        filename: `${profileName}.pptx`,
         type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
       }
     ]
