@@ -1,10 +1,8 @@
 const Profile = require('./profile')
-const fs = require('fs')
+const { send } = require('./email')
 
 exports.profile = async (req, res) => {
-  const fileName = await new Profile(req.body).build()
-
-  const stream = fs.createReadStream(fileName)
-  res.setHeader('content-type', 'application/vnd.openxmlformats-officedocument.presentationml.presentation')
-  stream.pipe(res)
+  const filename = await new Profile(req.body.profile).build()
+  await send({ to: req.body.recepient, profileName: req.body.profile.name, filename })
+  res.send('Email sent')
 }
