@@ -36,4 +36,4 @@ curl https://us-central1-sendpoints-220301.cloudfunctions.net/profile \
     }
   ]
 }
-EOF
+EOF > profile.pptx
