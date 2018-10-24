@@ -1,3 +1,10 @@
+## Slalom Profile Generator ##
+## Instructions:            
+## 1. Put your email address in the recepient field
+## 2. Edit profile information
+## 3. Run this file from the terminal
+## 4. Shortly, you will receive an email with the PPTX attached
+
 curl https://us-central1-sendpoints-220301.cloudfunctions.net/profile \
 -H "Content-Type: application/json" \
 --data @- << EOF
