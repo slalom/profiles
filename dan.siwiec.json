@@ -3,8 +3,8 @@
   "title": "Solution Principal",
   "practice": "Technology Enablement",
   "avatar": "https://serving.photos.photobox.com/10598395aaaeb9e4741126af9892b96b4bfe6cf7d5a38f3cc7edec5c86773ecb7175c341.jpg",
-  "years": 14,
-  "architectedNumber": 9,
+  "yearsOfExperience": 14,
+  "numberOfArchitectedApps": 9,
   "skills": [
     "API Design / Micro-services",
     "CI / CD best practices",

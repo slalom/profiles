@@ -42,7 +42,7 @@ class Profile {
         fill: blue
       })
       .withText({
-        text: `${profile.years}+`,
+        text: `${profile.yearsOfExperience}+`,
         x: 0.02,
         y: 0.05,
         bold: true,
@@ -50,14 +50,14 @@ class Profile {
         fontSize: 21
       })
       .withText({
-        text: 'years\nexperience',
+        text: 'years of\nexperience',
         x: 0.02,
         y: 0.13,
         color: white,
         fontSize: 9
       })
       .withText({
-        text: profile.architectedNumber,
+        text: profile.numberOfArchitectedApps,
         x: 0.1,
         y: 0.05,
         bold: true,
