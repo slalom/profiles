@@ -5,11 +5,10 @@
 ## 3. Run this file from the terminal
 ## 4. Shortly, you will receive an email with the PPTX attached
 
-curl https://us-central1-sendpoints-220301.cloudfunctions.net/profile \
+curl https://us-central1-slalom-profiles.cloudfunctions.net/profile \
 -H "Content-Type: application/json" \
 --data @- << EOF
 {
-  "recepient": "daniel.siwiec@gmail.com",
   "profile": {
     "name": "Dan Siwiec",
     "title": "Solution Principal",
