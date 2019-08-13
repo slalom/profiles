@@ -4,7 +4,7 @@ module.exports = {
   white: 'FFFFFF',
   lightGray: 'DFE2E1',
   logo: {
-    url: 'https://www.slalom.com/sites/all/themes/slalom_bootstrap/images/slalom-logo-white@2x.png',
-    ratio: 230 / 60
+    url: './images/logo.png',
+    ratio: 480 / 170
   }
 }
