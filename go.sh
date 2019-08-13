@@ -43,6 +43,7 @@ curl https://us-central1-slalom-profiles.cloudfunctions.net/profile \
         "description": "Led a team replatforming a Patient Engagement portal from a legacy monolithic, server-side application to a modern, SPA JavaScript stack with decoupled backend service. A secondary goal was to refresh CI practices and set standards for the rest of the organization to follow."
       }
     ]
-  }
+  },
+  "recepient": "daniel.siwiec@gmail.com"
 }
 EOF
