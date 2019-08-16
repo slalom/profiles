@@ -11,12 +11,14 @@ const fileContents = async filename => {
   return Buffer.from(file).toString('base64')
 }
 
-module.exports.send = async ({ to, filename, profileName }) => {
+module.exports.send = async ({ to, filename, profileName, editResponseUrl }) => {
   const msg = {
     to,
     from: 'te-profiles@slalom.com',
     subject: `Requested profile for ${profileName}`,
-    html: 'Generated automatically. For help, contact <strong>Dan Siwiec</strong>',
+    html: `To edit your response and regenerate the profile go <a href=${editResponseUrl}>here</a>.
+          <p>
+          For help, contact <strong>Dan Siwiec</strong>`,
     attachments: [
       {
         content: await fileContents(filename),
