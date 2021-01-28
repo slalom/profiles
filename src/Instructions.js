@@ -11,8 +11,10 @@ const downloadTemplate = () => {
     });
 }
 
-export default props => (<div>
+const Instructions = props => (<div>
   <div>
     <div>Download JSON <a href="#" onClick={downloadTemplate}>template</a></div>
   </div>
 </div>)
+
+export default Instructions

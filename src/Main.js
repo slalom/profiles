@@ -1,14 +1,13 @@
 import React from 'react'
 import { FileDrop } from 'react-file-drop'
+import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import './download.css'
+// import './download.css'
 import './Main.css'
 import Instructions from './Instructions'
 import Profile from './pptx/profile'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
-
-const styles = { border: '1px solid black', width: 600, color: 'black', padding: 20 };
 
 class Main extends React.Component {
 
@@ -20,7 +19,7 @@ class Main extends React.Component {
 	uploadPhoto = files => {
 		const reader = new FileReader()
 
-		reader.addEventListener("load", () => {
+		reader.addEventListener('load', () => {
 			this.setState({ photo: reader.result })
 		}, false)
 
@@ -54,10 +53,10 @@ class Main extends React.Component {
 
 	render() {
 		return (
-			<div id="container">
+			<Container maxWidth="md">
 				<Instructions></Instructions>
+				<h1 style={{textAlign: 'center'}}>Slalom Profiles</h1>
 				<Grid container spacing={0}
-					// direction="column"
 					alignItems="center"
 					justify="center"
 					style={{ minHeight: '100vh' }}>
@@ -65,7 +64,7 @@ class Main extends React.Component {
 					<Grid item xs={3}>
 						{!this.state.photo &&
 							<FileDrop onDrop={(files, event) => this.uploadPhoto(files)}>
-								Drop your square shaped photo here.
+								Drop your square shaped photo here
 					</FileDrop>}
 						{this.state.photo && <CheckCircleIcon style={{ fontSize: 120, color: '#0c62fb' }} />}
 					</Grid>
@@ -80,7 +79,7 @@ class Main extends React.Component {
 						{this.state.pptx && <a href="#" onClick={this.downloadPptx}><CloudDownloadIcon style={{ fontSize: 120, color: 'green' }} /></a>}
 					</Grid>
 				</Grid>
-			</div>
+			</Container>
 		)
 	}
 
