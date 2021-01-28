@@ -55,7 +55,7 @@ class Main extends React.Component {
 		return (
 			<Container maxWidth="md">
 				<Instructions></Instructions>
-				<h1 style={{textAlign: 'center'}}>Slalom Profiles</h1>
+				<h1 style={{textAlign: 'center'}}>Slalom Profiles Maker</h1>
 				<Grid container spacing={0}
 					alignItems="center"
 					justify="center"
