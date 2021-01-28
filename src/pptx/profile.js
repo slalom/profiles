@@ -1,6 +1,6 @@
-const Presentation = require('./presentation')
-const Section = require('./section')
-const { blue, black, white, logo } = require('./consts')
+import Presentation from './presentation'
+import Section from './section'
+import { blue, black, white, logo } from './consts'
 
 const toProjectBlocks = ({ field, project, role, items }) => {
   return [
@@ -11,9 +11,10 @@ const toProjectBlocks = ({ field, project, role, items }) => {
 
 const headerOptions = { fontSize: 14, bold: true, breakLine: true, paraSpaceAfter: 2 }
 
-class Profile {
-  constructor(profile) {
+export default class Profile {
+  constructor(profile, photo) {
     this.profile = profile
+    this.photo = photo
 
     this._leftTab = new Section({ x: 0, y: 0 })
       .withShape({
@@ -46,9 +47,9 @@ class Profile {
 
     this._avatar = new Section({ x: 0.05, y: 0.1 })
       .withImage({
-        path: profile.avatar,
+        data: this.photo,
         rounding: true,
-        sizing: { type: 'contain', w: 1.54, h: 1.54 }
+        sizing: { type: 'cover', w: 1.54, h: 1.54 }
       })
 
     this._middle = new Section({ x: 0.27, y: 0.1 })
@@ -83,15 +84,13 @@ class Profile {
       })
   }
 
-  async build(location) {
+  build() {
     return new Presentation(this.profile.name)
       .withSection(this._leftTab)
       .withSection(this._logo)
       .withSection(this._avatar)
       .withSection(this._middle)
       .withSection(this._right)
-      .build(location)
+      .build()
   }
 }
-
-module.exports = Profile

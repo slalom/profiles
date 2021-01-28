@@ -1,7 +1,7 @@
-const PptxGenJS = require('pptxgenjs')
-const pptx = new PptxGenJS()
+import pptxgen from 'pptxgenjs'
+const pptx = new pptxgen()
 
-class Section {
+export default class Section {
   constructor ({ x, y }) {
     this.x = x
     this.y = y
@@ -41,5 +41,3 @@ class Section {
     return this
   }
 }
-
-module.exports = Section
