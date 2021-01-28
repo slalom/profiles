@@ -79,6 +79,9 @@ class Main extends React.Component {
 						{this.state.pptx && <a href="#" onClick={this.downloadPptx}><CloudDownloadIcon style={{ fontSize: 120, color: 'green' }} /></a>}
 					</Grid>
 				</Grid>
+				<div style={{position:'absolute', left:0, bottom:0, right:0, textAlign:'right'}}>
+					by Dan Siwiec
+				</div>
 			</Container>
 		)
 	}
