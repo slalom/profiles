@@ -19,7 +19,7 @@ class Presentation {
 
     const workdir = location || '/tmp'
     const filename = path.join(workdir, this.name + '.pptx')
-    this.pptx.save(filename)
+    this.pptx.writeFile(filename)
     await waitOn({ resources: [filename] })
     return filename
   }
