@@ -1,4 +1,5 @@
 import React from 'react'
+import jsYaml from 'js-yaml'
 import { FileDrop } from 'react-file-drop'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -31,7 +32,7 @@ class Main extends React.Component {
 
 		reader.onload = e => {
 			const content = reader.result;
-			const profile = JSON.parse(content)
+			const profile = jsYaml.load(content)
 			const name = profile.name
 			let pptx = new Profile(profile, this.state.photo).build()
 			this.setState({ pptx, name })
@@ -71,7 +72,7 @@ class Main extends React.Component {
 					<Grid item xs={3}>
 						{this.state.photo && !this.state.pptx &&
 							<FileDrop onDrop={(files, event) => this.generatePptx(files)}>
-								Drop the profile JSON here
+								Drop the profile YAML here
 					</FileDrop>}
 						{this.state.pptx && <CheckCircleIcon style={{ fontSize: 120, color: '#0c62fb' }} />}
 					</Grid>

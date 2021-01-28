@@ -1,0 +1,43 @@
+---
+name: John Doe
+title: Consultant
+practice: Technology Enablement
+subpractice: Product Engineering
+skills:
+- Java / JavaScript / Python
+- DevOps & CI/CD best practices
+- AWS / GCP / Kubernetes
+- SQL / NoSQL
+about: |-
+  John is a Consultant for Technology Enablement in the San Francisco office with over 5 years of professional experience. His areas of expertise include full stack, cloud native application design and development, CI/CD and software engineering best practices.
+
+  John has led many agile teams, designing and implementing large-scale full-stack enterprise systems involving complex integrations and driving implementation of modern software practices.
+certs:
+- AWS Cloud Practitioner
+- Java Developer
+edu:
+- B.Sc. in Computer Engineering
+projects:
+- field: Global Biopharma Corporation
+  project: FooBar Implementation
+  role: Application Developer
+  items:
+  - Colaborated with business stakeholders to understand requirements
+  - Implemented functional stories per business requirements
+  - Colaborated with QAs and DevOps engineers to deploy application to production
+- field: International Airport in California
+  project: Taxi traffic prediction
+  role: Lead Engineer
+  items:
+  - Architected an Event-Driven system based on Apache Kafka composed of ~20 microservices,
+    enabling real-time decision-making supporting airport’s operational capabilities
+  - Led a team of 15 backend, frontend, mobile and DevOps engineers and Data Scientists
+    to develop the system
+  - Implemented many critical parts of the system
+- field: Major Global Bank
+  project: Automated testing harness
+  role: Lead Developer
+  items:
+  - Implemented user facing features for the mobile banking app
+  - Responsible for driving adoption of software best practices
+  - Mentored junior developers on the team
