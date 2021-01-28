@@ -56,12 +56,12 @@ class Main extends React.Component {
 		return (
 			<Container maxWidth="md">
 				<Instructions></Instructions>
-				<h1 style={{textAlign: 'center'}}><img height="30px" src="./images/logo-blue.png"/> Profiles Maker</h1>
 				<Grid container spacing={0}
 					alignItems="center"
-					justify="center"
-					style={{ minHeight: '100vh' }}>
-
+					justify="center">
+					<Grid item xs={12} style={{ minHeight: '20vh' }}>
+						<h1 style={{ textAlign: 'center' }}><img height="30px" src="./images/logo-blue.png" /> Profiles Maker</h1>
+					</Grid>
 					<Grid item xs={3}>
 						{!this.state.photo &&
 							<FileDrop onDrop={(files, event) => this.uploadPhoto(files)}>
@@ -80,7 +80,7 @@ class Main extends React.Component {
 						{this.state.pptx && <a href="#" onClick={this.downloadPptx}><CloudDownloadIcon style={{ fontSize: 120, color: 'green' }} /></a>}
 					</Grid>
 				</Grid>
-				<div style={{position:'absolute', left:0, bottom:0, right:0, textAlign:'right'}}>
+				<div style={{ position: 'absolute', left: 0, bottom: 0, right: 0, textAlign: 'right' }}>
 					by Dan Siwiec
 				</div>
 			</Container>
