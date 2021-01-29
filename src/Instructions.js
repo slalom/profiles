@@ -11,10 +11,12 @@ const downloadTemplate = () => {
     })
 }
 
-const Instructions = props => (<div>
+const Instructions = props => (
   <div>
-    <div>Download YAML <a href="#" onClick={downloadTemplate}>template</a></div>
+    <div>
+      <div style={{ textAlign: 'right' }}>Download YAML <a href="#" onClick={downloadTemplate}>template</a> | Install <a href="https://twodegrees1.sharepoint.com/teams/marketing/SitePages/Slalom-fonts.aspx" target="_blank">Mark Pro</a> fonts</div>
+    </div>
   </div>
-</div>)
+)
 
 export default Instructions

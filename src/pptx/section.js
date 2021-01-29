@@ -1,4 +1,6 @@
 import pptxgen from 'pptxgenjs'
+import { font } from './consts'
+
 const pptx = new pptxgen()
 
 export default class Section {
@@ -20,6 +22,7 @@ export default class Section {
     this.elementMakers.push(slide => {
       this._applyOffset(opts)
       opts.valign = 'top'
+      opts.fontFace = font
       slide.addText(opts.text, opts)
     })
     return this
