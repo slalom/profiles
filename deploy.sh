@@ -1,1 +1,0 @@
-gcloud functions deploy profile --project slalom-profiles --runtime nodejs8 --trigger-http --entry-point profile --verbosity info
