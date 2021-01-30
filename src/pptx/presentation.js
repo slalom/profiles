@@ -1,4 +1,4 @@
-import pptxgen from 'pptxgenjs'
+import pptxgen from '@danielsiwiec/pptxgenjs'
 
 export default class Presentation {
   constructor (name) {

@@ -1,4 +1,4 @@
-import pptxgen from 'pptxgenjs'
+import pptxgen from '@danielsiwiec/pptxgenjs'
 import { font } from './consts'
 
 const pptx = new pptxgen()

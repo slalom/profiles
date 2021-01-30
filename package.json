@@ -24,7 +24,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "js-yaml": "^4.0.0",
-    "pptxgenjs": "^3.4.0",
+    "@danielsiwiec/pptxgenjs": "1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-file-drop": "^3.1.2"

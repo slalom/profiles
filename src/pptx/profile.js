@@ -2,15 +2,15 @@ import Presentation from './presentation'
 import Section from './section'
 import { blue, black, white, logo } from './consts'
 
+const headerOptions = { fontSize: 12, bold: true, breakLine: true, paraSpaceAfter: 2, bullet: false }
+const bulletOptions = { fontSize: 8, bullet: true, bulletMargin: 10, breakLine: true }
+
 const toProjectBlocks = ({ field, project, role, items }) => {
   return [
     { text: `${field} | ${project} `, options: { fontSize: 8, color: blue, bold: true, breakLine: false, paraSpaceBefore: 8 } },
     { text: `${role}`, options: { fontSize: 8, color: black, italic: true, breakLine: true } },
-    { text: items.join('\n'), options: { fontSize: 8, bullet: true, paraSpaceBefore: 4 } }]
+    { text: items.join('\n'), options: Object.assign({}, bulletOptions, { paraSpaceBefore: 4 }) }]
 }
-
-const headerOptions = { fontSize: 14, bold: true, breakLine: true, paraSpaceAfter: 2, bullet: false }
-
 export default class Profile {
   constructor(profile, photo) {
     this.profile = profile
@@ -56,16 +56,16 @@ export default class Profile {
       .withText({
         text: [
           { text: 'About', options: headerOptions },
-          { text: profile.about, options: { align: 'justify' } },
+          { text: profile.about },
           { text: '\n' },
           profile.certs ? { text: 'Certifications', options: headerOptions } : {},
-          profile.certs ? { text: profile.certs.join('\n'), options: { bullet: true, breakLine: true } } : {},
+          profile.certs ? { text: profile.certs.join('\n'), options: bulletOptions } : {},
           { text: '\n' },
           profile.edu ? { text: 'Education', options: headerOptions } : {},
-          profile.edu ? { text: profile.edu.join('\n'), options: { bullet: true, breakLine: true } } : {},
+          profile.edu ? { text: profile.edu.join('\n'), options: bulletOptions } : {},
           { text: '\n' },
           { text: 'Areas of Expertise', options: headerOptions },
-          { text: profile.skills.join('\n'), options: { bullet: true } }
+          { text: profile.skills.join('\n'), options: bulletOptions }
         ],
         color: black,
         w: '28%',
@@ -78,7 +78,6 @@ export default class Profile {
           { text: 'Select Project Experience', options: headerOptions }
         ].concat(profile.projects.map(toProjectBlocks).flat()),
         w: '46%',
-        align: 'justify',
         fontSize: 9
       })
   }
