@@ -34,6 +34,7 @@ export default class Profile {
         ],
         x: 0.01,
         y: 0.42,
+        w: '20%',
         color: white,
         fontSize: 9
       })
