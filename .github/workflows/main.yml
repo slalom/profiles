@@ -18,7 +18,7 @@ jobs:
         npm install
         npm run build
       env:
-        CI: true
+        CI: false
     - name: Deploy to GitHub Pages
       uses: crazy-max/ghaction-github-pages@v2.2.0
       with:
