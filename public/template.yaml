@@ -17,14 +17,12 @@ certs:
 - Java Developer
 projects:
 - field: Global Biopharma Corporation
-  project: FooBar Implementation
   role: Application Developer
   items:
   - Colaborated with business stakeholders to understand requirements
   - Implemented functional stories per business requirements
   - Colaborated with QAs and DevOps engineers to deploy application to production
 - field: International Airport in California
-  project: Taxi traffic prediction
   role: Lead Engineer
   items:
   - Architected an Event-Driven system based on Apache Kafka composed of ~20 microservices,
@@ -33,7 +31,6 @@ projects:
     to develop the system
   - Implemented many critical parts of the system
 - field: Major Global Bank
-  project: Automated testing harness
   role: Lead Developer
   items:
   - Implemented user facing features for the mobile banking app

@@ -2,7 +2,7 @@ import Presentation from './presentation'
 import Section from './section'
 import { logo } from './consts'
 
-const toProjectBlocks = ({ field, project, role, items }) => {
+const toProjectBlocks = ({ field, role, items }) => {
   return [
     { text: `${role} - ${field}`, options: { fontFace: 'Slalom Sans', fontSize: 10, bold: true, paraSpaceBefore: 16, breakLine: true } },
     { text: items.join('. '), options: { fontSize: 9, paraSpaceBefore: 6, lineSpacing: 14, breakLine: true } }]
