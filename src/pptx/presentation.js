@@ -5,6 +5,7 @@ export default class Presentation {
     this.name = name
     this.sections = []
     this.pptx = new pptxgen()
+    this.pptx.layout = 'LAYOUT_WIDE'
     this.slide = this.pptx.addNewSlide()
   }
 

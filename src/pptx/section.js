@@ -4,13 +4,13 @@ import { font } from './consts'
 const pptx = new pptxgen()
 
 export default class Section {
-  constructor ({ x, y }) {
+  constructor({ x, y }) {
     this.x = x
     this.y = y
     this.elementMakers = []
   }
 
-  _applyOffset (opts) {
+  _applyOffset(opts) {
     opts.x = opts.x ? opts.x + this.x : this.x
     opts.y = opts.y ? opts.y + this.y : this.y
 
@@ -18,17 +18,17 @@ export default class Section {
     opts.y = `${opts.y * 100}%`
   }
 
-  withText (opts) {
+  withText(opts) {
     this.elementMakers.push(slide => {
       this._applyOffset(opts)
       opts.valign = 'top'
-      opts.fontFace = font
+      opts.fontFace = opts.fontFace || font
       slide.addText(opts.text, opts)
     })
     return this
   }
 
-  withImage (opts) {
+  withImage(opts) {
     this.elementMakers.push(slide => {
       this._applyOffset(opts)
       slide.addImage(opts)
@@ -36,7 +36,7 @@ export default class Section {
     return this
   }
 
-  withShape (opts) {
+  withShape(opts) {
     this.elementMakers.push(slide => {
       this._applyOffset(opts)
       slide.addShape(pptx.shapes[opts.type], opts)

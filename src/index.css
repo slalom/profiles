@@ -1,14 +1,14 @@
 @font-face {
-  font-family: MarkPro;
-  src: url("./fonts/MarkPro.otf") format("opentype");
+  font-family: SlalomSans;
+  src: url("./fonts/SlalomSans_Regular.otf") format("opentype");
 }
 
 @font-face {
-  font-family: MarkPro;
+  font-family: SlalomSans;
   font-weight: bold;
-  src: url("./fonts/MarkPro Bold.otf") format("opentype");
+  src: url("./fonts/SlalomSans_Bold.otf") format("opentype");
 }
 
 body {
-  font-family: 'MarkPro';
+  font-family: 'SlalomSans';
 }
