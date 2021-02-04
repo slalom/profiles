@@ -46,11 +46,11 @@ export default class Profile {
       .withShape({ x: 0.01, y: 0.04, type: 'LINE', h: 0, w: '35%', line: { width: 1 } })
       .withText({ y: 0.07, w: '35%', text: profile.projects.map(toProjectBlocks).flat() })
 
-    const skills = (profile.certs || []).concat(profile.skills)
+    const skills = (profile.certs || []).map(cert => `Certified ${cert}`).concat(profile.skills)
     this._right = new Section({ x: 0.73, y: 0.16 })
       .withText({ text: 'SKILLS', fontFace: 'Slalom Sans Bold', fontSize: 10, bold: true, charSpacing: 2 })
       .withShape({ x: 0.01, y: 0.04, type: 'LINE', h: 0, w: '23%', line: { width: 1 } })
-      .withText({ y: 0.09, w: '23%', text: skills.join('\n'), fontSize: 10, bullet: true, bulletMargin: 10, paraSpaceBefore: 10 })
+      .withText({ y: 0.09, w: '23%', text: skills.join('\n'), fontSize: 10, bullet: { indent: 10 }, paraSpaceBefore: 10 })
   }
 
   build() {
