@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "./static/css/main.77b33879.chunk.css",
+    "main.js": "./static/js/main.8f49feee.chunk.js",
+    "main.js.map": "./static/js/main.8f49feee.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.8d27a36d.js",
+    "runtime-main.js.map": "./static/js/runtime-main.8d27a36d.js.map",
+    "static/js/2.b6a3da8e.chunk.js": "./static/js/2.b6a3da8e.chunk.js",
+    "static/js/2.b6a3da8e.chunk.js.map": "./static/js/2.b6a3da8e.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.77b33879.chunk.css.map": "./static/css/main.77b33879.chunk.css.map",
+    "static/js/2.b6a3da8e.chunk.js.LICENSE.txt": "./static/js/2.b6a3da8e.chunk.js.LICENSE.txt",
+    "static/media/index.css": "./static/media/SlalomSans_Regular.928e4977.otf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8d27a36d.js",
+    "static/js/2.b6a3da8e.chunk.js",
+    "static/css/main.77b33879.chunk.css",
+    "static/js/main.8f49feee.chunk.js"
+  ]
+}
