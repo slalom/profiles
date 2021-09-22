@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import jsYaml from 'js-yaml'
 import { FileDrop } from 'react-file-drop'
 import Container from '@material-ui/core/Container'
@@ -24,6 +25,10 @@ class Main extends React.Component {
 		}, false)
 
 		reader.readAsDataURL(files[0])
+		ReactGA.event({
+			category: 'User',
+			action: 'Photo Uploaded'
+		})
 	}
 
 	generatePptx = files => {
@@ -38,6 +43,10 @@ class Main extends React.Component {
 		}
 
 		reader.readAsText(files[0])
+		ReactGA.event({
+			category: 'User',
+			action: 'YAML Uploaded'
+		})
 	}
 
 	downloadPptx = () => {
@@ -48,6 +57,10 @@ class Main extends React.Component {
 			a.href = url
 			a.download = `${this.state.name}.pptx`
 			a.click()
+			ReactGA.event({
+				category: 'User',
+				action: 'PPTX Downloaded'
+			})
 		})
 	}
 
