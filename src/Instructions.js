@@ -14,7 +14,7 @@ const downloadTemplate = () => {
 const Instructions = props => (
   <div>
     <div>
-      <div style={{ textAlign: 'right' }}>Download YAML <a href="#" onClick={downloadTemplate}>template</a> | Install official Slalom <a href="https://twodegrees1.sharepoint.com/teams/marketing/SitePages/Slalom-fonts.aspx" target="_blank">fonts</a></div>
+      <div style={{ textAlign: 'right' }}>Download YAML <a href="#/" onClick={downloadTemplate}>template</a> | Install official Slalom <a href="https://twodegrees1.sharepoint.com/teams/marketing/SitePages/Slalom-fonts.aspx" target="_blank" rel="noreferrer">fonts</a></div>
     </div>
   </div>
 )

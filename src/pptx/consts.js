@@ -4,7 +4,7 @@ module.exports = {
   white: 'ffffff',
   font: 'Slalom Sans Light',
   logo: {
-    url: './images/logo-black.png',
+    url: './images/logo-blue.png',
     ratio: 400 / 104
   }
 }

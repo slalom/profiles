@@ -17,24 +17,27 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@sendgrid/mail": "^7.4.2",
-    "aws-amplify": "^3.3.14",
-    "aws-amplify-react": "^4.2.18",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "js-yaml": "^4.0.0",
-    "pptxgenjs": "^3.4.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-file-drop": "^3.1.2",
-    "react-ga": "^3.3.0"
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/base": "^5.0.0-beta.30",
+    "@mui/icons-material": "^5.15.3",
+    "@mui/material": "^5.15.3",
+    "@sendgrid/mail": "^8.1.0",
+    "aws-amplify": "^6.0.9",
+    "aws-amplify-react": "^4.1.22",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "js-yaml": "^4.1.0",
+    "pptxgenjs": "^3.12.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-file-drop": "^3.1.6",
+    "react-ga": "^3.3.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7",
-    "react-scripts": "^4.0.1",
-    "standard": "^16.0.3"
+    "nodemon": "^3.0.2",
+    "react-scripts": "^5.0.1",
+    "standard": "^17.1.0"
   },
   "browserslist": {
     "production": [

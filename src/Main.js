@@ -2,13 +2,12 @@ import React from 'react'
 import ReactGA from 'react-ga'
 import jsYaml from 'js-yaml'
 import { FileDrop } from 'react-file-drop'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import { Container,Grid } from '@mui/material'
 import './Main.css'
 import Instructions from './Instructions'
 import Profile from './pptx/profile'
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
-import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import { CloudDownload } from '@mui/icons-material'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
 class Main extends React.Component {
 
@@ -18,35 +17,50 @@ class Main extends React.Component {
 	}
 
 	uploadPhoto = files => {
-		const reader = new FileReader()
+		const IMAGE_FILE_TYPES = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff'];
+		const extension = files[0].name.split('.').pop().toLowerCase();
+        
+		if (IMAGE_FILE_TYPES.indexOf(extension) > -1) {
+			const reader = new FileReader()
 
-		reader.addEventListener('load', () => {
-			this.setState({ photo: reader.result })
-		}, false)
+			reader.addEventListener('load', () => {
+				this.setState({ photo: reader.result })
+			}, false)
 
-		reader.readAsDataURL(files[0])
-		ReactGA.event({
-			category: 'User',
-			action: 'Photo Uploaded'
-		})
+			reader.readAsDataURL(files[0])
+			ReactGA.event({
+				category: 'User',
+				action: 'Photo Uploaded'
+			})
+		} else {
+			document.querySelector('#imgErr').style = 'display: block'
+
+		}
 	}
 
 	generatePptx = files => {
-		const reader = new FileReader()
+		const YAML_FILE_TYPES = ['yaml', 'yml'];
+		const extension = files[0].name.split('.').pop().toLowerCase();
 
-		reader.onload = e => {
-			const content = reader.result;
-			const profile = jsYaml.load(content)
-			const name = profile.name
-			let pptx = new Profile(profile, this.state.photo).build()
-			this.setState({ pptx, name })
+		if (YAML_FILE_TYPES.indexOf(extension) > -1) {
+			const reader = new FileReader()
+
+			reader.onload = e => {
+				const content = reader.result;
+				const profile = jsYaml.load(content)
+				const name = profile.firstname + "_" + profile.lastname
+				let pptx = new Profile(profile, this.state.photo).build()
+				this.setState({ pptx, name })
+			}
+
+			reader.readAsText(files[0])
+			ReactGA.event({
+				category: 'User',
+				action: 'YAML Uploaded'
+			})
+		} else {
+			document.querySelector('#yamlErr').style = 'display: block'
 		}
-
-		reader.readAsText(files[0])
-		ReactGA.event({
-			category: 'User',
-			action: 'YAML Uploaded'
-		})
 	}
 
 	downloadPptx = () => {
@@ -66,34 +80,59 @@ class Main extends React.Component {
 
 	render() {
 		return (
-			<Container maxWidth="md">
+			<Container maxWidth="lg">
 				<Instructions></Instructions>
 				<Grid container spacing={0}
-					alignItems="center"
-					justify="center">
+					alignContent="center"
+					justify="center"
+					style={{ marginTop: '2em' }}>
 					<Grid item xs={12} style={{ minHeight: '20vh' }}>
-						<h1 style={{ textAlign: 'center' }}><img height="30px" src="./images/logo-blue.png" /> Profiles Maker</h1>
+						<h1 style={{ textAlign: 'center' }}><img height="30px" src="./images/logo-blue.png" alt="Slalom Logo"/> Profiles Maker</h1>
 					</Grid>
-					<Grid item xs={3}>
+					<Grid textAlign="center" item xs={4}>
 						{!this.state.photo &&
-							<FileDrop onDrop={(files, event) => this.uploadPhoto(files)}>
-								Drop your square shaped photo here
-					</FileDrop>}
-						{this.state.photo && <CheckCircleIcon style={{ fontSize: 120, color: '#0c62fb' }} />}
+							<div>
+								<FileDrop onDrop={(files, event) => this.uploadPhoto(files)} >
+									Drop your square shaped photo here
+									
+								</FileDrop>
+								<p id="imgErr" class="error">Invalid Image File!</p>
+							</div>
+						}
+						{this.state.photo && 
+							<div>
+								<CheckCircleIcon style={{ fontSize: 120, color: '#0c62fb' }}/>
+								<p>Image Uploaded.</p>
+							</div>
+						}
 					</Grid>
-					<Grid item xs={3}>
+					<Grid textAlign="center" item xs={4}>
 						{this.state.photo && !this.state.pptx &&
-							<FileDrop onDrop={(files, event) => this.generatePptx(files)}>
-								Drop the profile YAML here
-					</FileDrop>}
-						{this.state.pptx && <CheckCircleIcon style={{ fontSize: 120, color: '#0c62fb' }} />}
+							<div>
+								<FileDrop onDrop={(files, event) => this.generatePptx(files)}>
+									Drop the profile YAML here
+								</FileDrop>
+								<p id="yamlErr" class="error">Invalid Profile YAML!</p>
+							</div>
+						}
+						{this.state.pptx && 
+							<div>
+								<CheckCircleIcon style={{ fontSize: 120, color: '#0c62fb' }} />
+								<p>Profile Uploaded.</p>
+							</div>
+						}
 					</Grid>
-					<Grid item xs={3}>
-						{this.state.pptx && <a href="#" onClick={this.downloadPptx}><CloudDownloadIcon style={{ fontSize: 120, color: 'green' }} /></a>}
+					<Grid textAlign="center" item xs={4}>
+						{this.state.pptx && 
+							<div>
+								<a href="#/" onClick={this.downloadPptx}><CloudDownload style={{ fontSize: 120, color: 'green' }} /></a>
+								<p>Your Profile is ready!</p>
+							</div>
+						}
 					</Grid>
 				</Grid>
-				<div style={{ position: 'absolute', left: 0, bottom: 0, right: 0, textAlign: 'right' }}>
-					by Dan Siwiec
+				<div style={{ position: 'absolute', left: 0, bottom: '1em', right: '2em', textAlign: 'right' }}>
+					by Slalom NorCal TE
 				</div>
 			</Container>
 		)

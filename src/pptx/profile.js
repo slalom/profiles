@@ -4,60 +4,66 @@ import { logo } from './consts'
 
 const toProjectBlocks = ({ field, role, items }) => {
   return [
-    { text: `${role} - ${field}`, options: { fontFace: 'Slalom Sans', fontSize: 10, bold: true, paraSpaceBefore: 16, breakLine: true } },
-    { text: items.join('. '), options: { fontSize: 9, paraSpaceBefore: 6, lineSpacing: 14, breakLine: true } }]
+    { text: `${role} - ${field}`, options: { fontSize: 10.5, bold: true, paraSpaceBefore: 16, breakLine: true } },
+    { text: items.join('\n'), options: { fontSize: 10.5, bullet: { indent: 15 }, paraSpaceBefore: 6, breakLine: true } }
+  ]
 }
 export default class Profile {
   constructor(profile, photo) {
     this.profile = profile
     this.photo = photo
 
-    this._leftTab = new Section({ x: 0, y: 0 })
+    this._leftTab = new Section({ x: 0.02, y: 0.45 })
       .withText({
         text: [
-          { text: profile.name, options: { fontFace: 'Slalom Sans Bold', fontSize: 33, breakLine: true } },
-          { text: '\n\n\n' },
-          { text: `${profile.title}\n${profile.subpractice}`, options: { fontSize: 14, breakLine: true } },
+          { text: profile.firstname, options: { fontSize: 32, bold: true, color: '0c62fb', breakLine: true } },
+          { text: profile.lastname, options: { fontSize: 32, bold: true, breakLine: true } },
           { text: '\n' },
-          { text: profile.about, options: { fontSize: 10 } }
+          { text: `${profile.title}/${profile.practice}`, options: { fontSize: 14, bold: true, breakLine: true } },
+          { text: '\n' },
+          { text: profile.about, options: { fontSize: 11 } }
         ],
-        x: 0.04,
-        y: 0.37,
-        w: '27%',
+        w: 4.50,
         fontSize: 16
       })
-
-    this._avatar = new Section({ x: 0.05, y: 0.1 })
-      .withImage({
-        data: this.photo,
-        rounding: true,
-        sizing: { type: 'cover', w: 1.82, h: 1.82 }
-      })
-
-    this._logo = new Section({ x: 0.87, y: 0.09 })
       .withImage({
         path: logo.url,
-        w: 0.27 * logo.ratio,
-        h: 0.27
+        x: 0.007,
+        y: 0.49,
+        w: 0.17 * logo.ratio,
+        h: 0.17
+      })
+      .withText({
+        text: '\u00A92024 Slalom. All Rights Reserved. Proprietary and Confidential.',
+        x: 0.06,
+        y: 0.495,
+        fontSize: 8,
+        color: '8c8c8c'
       })
 
-    this._middle = new Section({ x: 0.34, y: 0.16 })
-      .withText({ text: 'RELEVANT EXPERIENCE', fontFace: 'Slalom Sans Bold', fontSize: 10, bold: true, charSpacing: 2 })
-      .withShape({ x: 0.01, y: 0.04, type: 'LINE', h: 0, w: '35%', line: { width: 1 } })
-      .withText({ y: 0.07, w: '35%', text: profile.projects.map(toProjectBlocks).flat() })
+    this._avatar = new Section({ x: 0.03, y: 0.08 })
+      .withImage({
+        data: this.photo,
+        rounding: false,
+        sizing: { type: 'cover', w: 2.04, h: 2.04 }
+      })
+
+    this._middle = new Section({ x: 0.40, y: 0.13 })
+      .withText({ x: 0.01, w: 4.77, text: 'RELEVANT EXPERIENCE', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
+      .withShape({ x: 0.01, y: 0.05, w: 4.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
+      .withText({ x: 0.01, y: 0.08, w: 4.77, text: profile.projects.map(toProjectBlocks).flat() })
 
     const skills = (profile.certs || []).map(cert => `Certified ${cert}`).concat(profile.skills)
-    this._right = new Section({ x: 0.73, y: 0.16 })
-      .withText({ text: 'SKILLS', fontFace: 'Slalom Sans Bold', fontSize: 10, bold: true, charSpacing: 2 })
-      .withShape({ x: 0.01, y: 0.04, type: 'LINE', h: 0, w: '23%', line: { width: 1 } })
-      .withText({ y: 0.09, w: '23%', text: skills.join('\n'), fontSize: 10, bullet: { indent: 10 }, paraSpaceBefore: 10 })
+    this._right = new Section({ x: 0.77, y: 0.13 })
+      .withText({ x: 0.01, w: 2.69, text: 'SKILLS', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
+      .withShape({ x: 0.01, y: 0.05, w: 2.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
+      .withText({ x: 0.01, y: 0.08, w: 2.69, text: skills.join('\n'), fontSize: 10.5, bullet: { indent: 15 }, paraSpaceBefore: 6 })
   }
 
   build() {
-    return new Presentation(this.profile.name)
+    return new Presentation(this.profile.firstname + "_" + this.profile.lastname)
+      .withSection(this._avatar)  
       .withSection(this._leftTab)
-      .withSection(this._logo)
-      .withSection(this._avatar)
       .withSection(this._middle)
       .withSection(this._right)
       .build()

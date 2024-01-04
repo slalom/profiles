@@ -1,5 +1,6 @@
 ---
-name: John Doe
+firstname: John
+lastname: Doe
 title: Consultant
 practice: Technology Enablement
 subpractice: Product Engineering

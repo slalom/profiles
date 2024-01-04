@@ -1,5 +1,4 @@
 import pptxgen from 'pptxgenjs'
-import { font } from './consts'
 
 const pptx = new pptxgen()
 
@@ -22,7 +21,7 @@ export default class Section {
     this.elementMakers.push(slide => {
       this._applyOffset(opts)
       opts.valign = 'top'
-      opts.fontFace = opts.fontFace || font
+      opts.fontFace = opts.fontFace || 'Avenir Next LT Pro'
       slide.addText(opts.text, opts)
     })
     return this

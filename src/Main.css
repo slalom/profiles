@@ -55,3 +55,10 @@
 .file-drop > .file-drop-target.file-drop-dragging-over-target {
   border-color: #0c62fb;
 }
+
+.error {
+  display: none;
+  margin-top: 1.2em;
+  font-size: large;
+  color: #ff0000;
+}

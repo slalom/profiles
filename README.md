@@ -7,7 +7,7 @@ Go to https://slalom.github.io/profiles
 
 ### Prerequisites
 
-- Node v14
+- Node v20
 
 ### Running
 
