@@ -14,6 +14,7 @@ export default class Profile {
     this.photo = photo
 
     this._leftTab = new Section({ x: 0.04, y: 0.42 })
+    this._leftTab = new Section({ x: 0.04, y: 0.42 })
       .withText({
         text: [
           { text: profile.firstname, options: { fontSize: 32, bold: true, color: '0c62fb', breakLine: true } },
