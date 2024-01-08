@@ -13,7 +13,7 @@ export default class Profile {
     this.profile = profile
     this.photo = photo
 
-    this._leftTab = new Section({ x: 0.02, y: 0.45 })
+    this._leftTab = new Section({ x: 0.04, y: 0.42 })
       .withText({
         text: [
           { text: profile.firstname, options: { fontSize: 32, bold: true, color: '0c62fb', breakLine: true } },
@@ -23,49 +23,70 @@ export default class Profile {
           { text: '\n' },
           { text: profile.about, options: { fontSize: 11 } }
         ],
-        w: 4.50,
+        w: 4.20,
         fontSize: 16
       })
       .withImage({
         path: logo.url,
-        x: 0.007,
-        y: 0.49,
+        x: 0.005,
+        y: 0.522,
         w: 0.17 * logo.ratio,
         h: 0.17
       })
       .withText({
         text: '\u00A92024 Slalom. All Rights Reserved. Proprietary and Confidential.',
         x: 0.06,
-        y: 0.495,
+        y: 0.527,
         fontSize: 8,
         color: '8c8c8c'
       })
 
-    this._avatar = new Section({ x: 0.03, y: 0.08 })
+    this._avatar = new Section({ x: 0.04, y: 0.09 })
       .withImage({
         data: this.photo,
         rounding: false,
         sizing: { type: 'cover', w: 2.04, h: 2.04 }
       })
+      .withShape({
+        type: 'MOON',
+        x: 0.134,
+        y: 0.239,
+        w: 0.5,
+        h: 0.5,
+        rotate: 225,
+        rectRadius: 0.35,
+        fill: { color: 'ffffff' }
+      })
 
-    this._middle = new Section({ x: 0.40, y: 0.13 })
+    this._experience = new Section({ x: 0.35, y: 0.120 })
       .withText({ x: 0.01, w: 4.77, text: 'RELEVANT EXPERIENCE', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
-      .withShape({ x: 0.01, y: 0.05, w: 4.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
-      .withText({ x: 0.01, y: 0.08, w: 4.77, text: profile.projects.map(toProjectBlocks).flat() })
+      .withShape({ x: 0.01, y: 0.045, w: 4.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
+      .withText({ x: 0.01, y: 0.06, w: 4.77, text: profile.projects.map(toProjectBlocks).flat() })
 
-    const skills = (profile.certs || []).map(cert => `Certified ${cert}`).concat(profile.skills)
-    this._right = new Section({ x: 0.77, y: 0.13 })
+    this.skills = (profile.skills || [])
+    this._skill = new Section({ x: 0.70, y: 0.120 })
       .withText({ x: 0.01, w: 2.69, text: 'SKILLS', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
+      .withShape({ x: 0.01, y: 0.045, w: 2.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
+      .withText({ x: 0.01, y: 0.06, w: 2.69, text: this.skills.join('\n'), fontSize: 10.5, bullet: { indent: 15 }, paraSpaceBefore: 6 })
+
+    this.certs = (profile.certs || [])
+    this._cert = new Section({ x: 0.70, y: 0.65 })
+      .withText({ x: 0.01, w: 3.6, text: 'EDUCATION & CERTIFICATIONS', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
       .withShape({ x: 0.01, y: 0.05, w: 2.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
-      .withText({ x: 0.01, y: 0.08, w: 2.69, text: skills.join('\n'), fontSize: 10.5, bullet: { indent: 15 }, paraSpaceBefore: 6 })
+      .withText({ x: 0.01, y: 0.08, w: 2.69, text: this.certs.join('\n'), fontSize: 10.5, bullet: { indent: 15 }, paraSpaceBefore: 6 })
   }
 
   build() {
-    return new Presentation(this.profile.firstname + "_" + this.profile.lastname)
+    let presentation = new Presentation(this.profile.firstname + "_" + this.profile.lastname)
       .withSection(this._avatar)  
       .withSection(this._leftTab)
-      .withSection(this._middle)
-      .withSection(this._right)
-      .build()
+      .withSection(this._experience)
+      .withSection(this._skill)
+
+    if (this.certs.length>0) {
+      presentation = presentation.withSection(this._cert)
+    }
+
+    return presentation.build()
   }
 }
