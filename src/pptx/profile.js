@@ -19,9 +19,9 @@ export default class Profile {
       { text: '\n' }
     ];
 
-    if (profile.title) {
+    if (profile.desiredrole) {
       introText.push(
-        { text: `${profile.title}`, options: { fontSize: 14, bold: true, breakLine: true } },
+        { text: `${profile.desiredrole}`, options: { fontSize: 14, bold: true, breakLine: true } },
         { text: '\n' }
       )
     }

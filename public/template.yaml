@@ -1,7 +1,7 @@
 ---
 firstname: John
 lastname: Doe
-title: Software/DevOps Engineer
+desiredrole: Software/DevOps Engineer
 skills:
 - Java / JavaScript / Python
 - DevOps & CI/CD best practices
