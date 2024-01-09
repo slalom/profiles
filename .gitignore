@@ -2,5 +2,6 @@ node_modules
 *.pptx
 .vscode/
 .eslintcache
+.gcloudignore
 
 build/

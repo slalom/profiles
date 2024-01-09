@@ -1,9 +1,7 @@
 ---
 firstname: John
 lastname: Doe
-title: Consultant
-practice: Technology Enablement
-subpractice: Product Engineering
+title: Software/DevOps Engineer
 skills:
 - Java / JavaScript / Python
 - DevOps & CI/CD best practices

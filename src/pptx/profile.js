@@ -13,17 +13,25 @@ export default class Profile {
     this.profile = profile
     this.photo = photo
 
+    let introText = [
+      { text: profile.firstname, options: { fontSize: 32, bold: true, color: '0c62fb', breakLine: true } },
+      { text: profile.lastname, options: { fontSize: 32, bold: true, breakLine: true } },
+      { text: '\n' }
+    ];
+
+    if (profile.title) {
+      introText.push(
+        { text: `${profile.title}`, options: { fontSize: 14, bold: true, breakLine: true } },
+        { text: '\n' }
+      )
+    }
+
+    introText.push({ text: profile.about, options: { fontSize: 11 } });
+
     this._leftTab = new Section({ x: 0.04, y: 0.42 })
     this._leftTab = new Section({ x: 0.04, y: 0.42 })
       .withText({
-        text: [
-          { text: profile.firstname, options: { fontSize: 32, bold: true, color: '0c62fb', breakLine: true } },
-          { text: profile.lastname, options: { fontSize: 32, bold: true, breakLine: true } },
-          { text: '\n' },
-          { text: `${profile.title}/${profile.practice}`, options: { fontSize: 14, bold: true, breakLine: true } },
-          { text: '\n' },
-          { text: profile.about, options: { fontSize: 11 } }
-        ],
+        text: introText,
         w: 4.20,
         fontSize: 16
       })
