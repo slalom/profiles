@@ -29,7 +29,6 @@ export default class Profile {
     introText.push({ text: profile.about, options: { fontSize: 11 } });
 
     this._leftTab = new Section({ x: 0.04, y: 0.42 })
-    this._leftTab = new Section({ x: 0.04, y: 0.42 })
       .withText({
         text: introText,
         w: 4.20,
@@ -68,34 +67,31 @@ export default class Profile {
         fill: { color: 'ffffff' }
       })
 
-    this._experience = new Section({ x: 0.35, y: 0.120 })
+    this._middleTab = new Section({ x: 0.35, y: 0.120 })
       .withText({ x: 0.01, w: 4.77, text: 'RELEVANT EXPERIENCE', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
       .withShape({ x: 0.01, y: 0.045, w: 4.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
       .withText({ x: 0.01, y: 0.06, w: 4.77, text: profile.projects.map(toProjectBlocks).flat() })
 
     this.skills = (profile.skills || [])
-    this._skill = new Section({ x: 0.70, y: 0.120 })
+    this._rightTab = new Section({ x: 0.70, y: 0.12 })
       .withText({ x: 0.01, w: 2.69, text: 'SKILLS', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
       .withShape({ x: 0.01, y: 0.045, w: 2.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
       .withText({ x: 0.01, y: 0.06, w: 2.69, text: this.skills.join('\n'), fontSize: 10.5, bullet: { indent: 15 }, paraSpaceBefore: 6 })
 
-    this.certs = (profile.certs || [])
-    this._cert = new Section({ x: 0.70, y: 0.65 })
-      .withText({ x: 0.01, w: 3.6, text: 'EDUCATION & CERTIFICATIONS', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
-      .withShape({ x: 0.01, y: 0.05, w: 2.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
-      .withText({ x: 0.01, y: 0.08, w: 2.69, text: this.certs.join('\n'), fontSize: 10.5, bullet: { indent: 15 }, paraSpaceBefore: 6 })
+    if (profile.certs) {
+      this._rightTab = this._rightTab
+        .withText({ x: 0.01, y: 0.52, w: 3.6, text: 'EDUCATION & CERTIFICATIONS', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
+        .withShape({ x: 0.01, y: 0.565, w: 2.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
+        .withText({ x: 0.01, y: 0.58, w: 2.69, text: profile.certs.join('\n'), fontSize: 10.5, bullet: { indent: 15 }, paraSpaceBefore: 6 })
+    }
   }
 
   build() {
     let presentation = new Presentation(this.profile.firstname + "_" + this.profile.lastname)
       .withSection(this._avatar)  
       .withSection(this._leftTab)
-      .withSection(this._experience)
-      .withSection(this._skill)
-
-    if (this.certs.length>0) {
-      presentation = presentation.withSection(this._cert)
-    }
+      .withSection(this._middleTab)
+      .withSection(this._rightTab)
 
     return presentation.build()
   }
