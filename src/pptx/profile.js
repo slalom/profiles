@@ -70,7 +70,7 @@ export default class Profile {
     this._middleTab = new Section({ x: 0.35, y: 0.120 })
       .withText({ x: 0.01, w: 4.5, text: 'RELEVANT EXPERIENCE', fontSize: 12, bold: true, color: '0c62fb', charSpacing: 2 })
       .withShape({ x: 0.01, y: 0.045, w: 4.0, type: 'LINE', h: 0, line: { width: 0.5, color: 'c4c4c4' } })
-      .withText({ x: 0.01, y: 0.06, w: 4.77, text: profile.projects.map(toProjectBlocks).flat() })
+      .withText({ x: 0.01, y: 0.06, w: 4.5, text: profile.projects.map(toProjectBlocks).flat() })
 
     this.skills = (profile.skills || [])
     this._rightTab = new Section({ x: 0.70, y: 0.12 })
